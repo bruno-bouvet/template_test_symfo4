@@ -13,7 +13,7 @@ use Cocur\Slugify\Slugify;
 class Property
 {
 
-    const HEAT = [
+    public const HEAT = [
         0 => 'electric',
         1 => 'gaz'
     ];

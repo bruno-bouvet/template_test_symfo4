@@ -50,8 +50,8 @@ class PropertyController extends AbstractController
     }
 
     /**
-     * @param $slug
-     * @param $id
+     * @param Property $property
+     * @param string $slug
      * @return Response
      * @Route("/biens/{slug}-{id}", name="property.show", requirements={"slug" : "[a-z0-9\-]*" })
      */
