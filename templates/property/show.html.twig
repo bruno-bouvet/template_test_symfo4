@@ -18,14 +18,20 @@
             {% endif %}
             <div class="row">
                 <div class="col-md-8">
-                    {% if  property.filename %}
-                        <img src="{{ vich_uploader_asset(property, 'imageFile') |imagine_filter('medium') }}" alt=""
-                             class="card-img-top"
-                             style="width: 100%; height: auto">
+
+                    {% if  property.picture %}
+                        <a href="{{ path('property.show', { id:property.id , slug: property.slug }) }}">
+                            <img src="{{ vich_uploader_asset(property.picture, 'imageFile') |imagine_filter('thumb') }}"
+                                 alt="{{ property.slug }}"
+                                 class="card-img-top"
+                                 style="width: 100%; height: auto">
+                        </a>
                     {% else %}
-                        <img src="{{ 'empty.png' |imagine_filter('medium') }}" alt=""
-                             class="card-img-top"
-                             style="width: 100%; height: auto">
+                        <a href="{{ path('property.show', { id:property.id , slug: property.slug }) }}">
+                            <img src="{{ 'empty.png' |imagine_filter('thumb') }}" alt="{{ property.slug }}"
+                                 class="card-img-top"
+                                 style="width: 100%; height: auto">
+                        </a>
                     {% endif %}
                 </div>
                 <div class="col-md-4">

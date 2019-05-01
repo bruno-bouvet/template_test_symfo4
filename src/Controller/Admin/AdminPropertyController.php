@@ -108,11 +108,11 @@ class AdminPropertyController extends AbstractController
      * @Route("/admin/property/{id}", name="property.admin.delete", methods="DELETE")
      * @param Property $property
      * @param Request $request
-     * @return Response
+     * @return Response|null
      */
     public function delete(Property $property, Request $request): ?Response
     {
-        dump('suppression');
+//        dump('suppression');
         if ($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token'))) {
             $this->em->remove($property);
             $this->em->flush();

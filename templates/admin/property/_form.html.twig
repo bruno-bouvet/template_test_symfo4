@@ -1,9 +1,27 @@
-
 {{ form_start(form) }}
 <div class="row">
-    <div class="col-md-4">{{ form_row(form.title) }}</div>
-    <div class="col-md-4">{{ form_row(form.surface) }}</div>
-    <div class="col-md-4">{{ form_row(form.price) }}</div>
+    <div class="col-md-8">
+        <div class="col-md-4">{{ form_row(form.title) }}</div>
+        <div class="col-md-4">{{ form_row(form.surface) }}</div>
+        <div class="col-md-4">{{ form_row(form.price) }}</div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="row flex justify-content-start flew-wrap">
+            <div class="col">{{ form_row(form.pictureFiles) }}</div>
+            {% for picture in property.pictures %}
+                <div class="col" style="width: 100px; flex: none; margin: 5px;">
+                    <img src="{{ vich_uploader_asset(picture, 'imageFile') | imagine_filter('thumb') }}" width="100"
+                         alt="">
+                    <a href="{{ path('admin.picture.delete', {id : picture.id}) }}" class="btn btn-danger" data-delete
+                       data-token="{{ csrf_token('delete' ~ picture.id) }}">Supprimer
+                    </a>
+                    </form>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-2">{{ form_row(form.rooms) }}</div>
@@ -15,10 +33,8 @@
     <div class="col-md-5">{{ form_row(form.address) }}</div>
     <div class="col-md-2">{{ form_row(form.city) }}</div>
     <div class="col-md-2">{{ form_row(form.postal_code) }}</div>
-    <div class="col-md-2">{{ form_row(form.imageFile) }}</div>
     <div class="col-md-2">{{ form_row(form.sold) }}</div>
 
-    <img src="/images/properties/{{ property.filename }}" alt="">
 
 </div>
 

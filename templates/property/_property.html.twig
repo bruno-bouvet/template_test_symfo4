@@ -1,7 +1,7 @@
 <div class="card mb-4">
-    {% if  property.filename %}
+    {% if  property.picture %}
         <a href="{{ path('property.show', { id:property.id , slug: property.slug }) }}">
-            <img src="{{ vich_uploader_asset(property, 'imageFile') |imagine_filter('thumb') }}"
+            <img src="{{ vich_uploader_asset(property.picture, 'imageFile') |imagine_filter('thumb') }}"
                  alt="{{ property.slug }}"
                  class="card-img-top"
                  style="width: 100%; height: auto">
