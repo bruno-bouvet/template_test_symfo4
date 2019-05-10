@@ -90,6 +90,7 @@ class AdminPropertyController extends AbstractController
 
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
+//        dump($form); die;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();

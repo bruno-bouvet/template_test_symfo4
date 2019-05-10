@@ -23,6 +23,17 @@ class Picture
     private $id;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="property_image", fileNameProperty="fileName")
+     *
+     * @Assert\Image(mimeTypes="image/*")
+     *
+     * @var File|null
+     */
+    private $imageFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $fileName;
@@ -37,17 +48,6 @@ class Picture
     {
         return $this->id;
     }
-
-    /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     * @Vich\UploadableField(mapping="property_image", fileNameProperty="fileName")
-     *
-     * @Assert\Image(mimeTypes="image/*")
-     *
-     * @var File|null
-     */
-    private $imageFile;
 
     public function getFileName(): ?string
     {
