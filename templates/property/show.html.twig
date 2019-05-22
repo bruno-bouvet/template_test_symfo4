@@ -18,21 +18,22 @@
             {% endif %}
             <div class="row">
                 <div class="col-md-8">
-
-                    {% if  property.picture %}
-                        <a href="{{ path('property.show', { id:property.id , slug: property.slug }) }}">
-                            <img src="{{ vich_uploader_asset(property.picture, 'imageFile') |imagine_filter('thumb') }}"
-                                 alt="{{ property.slug }}"
-                                 class="card-img-top"
-                                 style="width: 100%; height: auto">
-                        </a>
-                    {% else %}
-                        <a href="{{ path('property.show', { id:property.id , slug: property.slug }) }}">
+                    <div data-slider>
+                        {% if  property.pictures is empty %}
                             <img src="{{ 'empty.png' |imagine_filter('thumb') }}" alt="{{ property.slug }}"
                                  class="card-img-top"
                                  style="width: 100%; height: auto">
-                        </a>
-                    {% endif %}
+                        {% else %}
+                            {% for picture in property.pictures %}
+                                <img src="{{ vich_uploader_asset(property.picture, 'imageFile') |imagine_filter('thumb') }}"
+                                     alt="{{ property.slug }}"
+                                     class="card-img-top"
+                                     style="width: 100%; height: auto">
+
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
                 </div>
                 <div class="col-md-4">
                     <h1>{{ property.title }}</h1>
@@ -106,6 +107,10 @@
 
             </div>
         </div>
+        {#        <div id="map" style="width: 100%; height: 100%" data-lat="{{ property.lat }}" data-lng="{{ property.lng }}"></div>#}
+        <div class="mb-3" id="map" style="width: 100%; height: 400px" data-lat="{{ property.lat }}"
+             data-lng="{{ property.lng }}"></div>
+
     </div>
 {% endblock %}
 
